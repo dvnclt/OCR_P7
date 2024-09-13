@@ -20,7 +20,7 @@ def calculate_total_cost_gain(combination):
 def get_top_combinations(actions, budget, top_n):
     valid_combinations = []
 
-    # Générer toutes les combinaisons possibles d'actions
+    # Pour toutes les tailles de combinaisons possibles
     for r in range(1, len(actions) + 1):
         # Génère toutes les commbinaisons possibles avec Itertools
         for combination in itertools.combinations(actions.items(), r):
