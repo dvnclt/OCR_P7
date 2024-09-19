@@ -82,14 +82,23 @@ def knapsack(actions, budget):
     return selected_actions[budget], total_cost, dp[budget]
 
 
-# Combinaison des différentes approches
+# Essai des deux approches
 def optimized_solution(actions, budget):
-    # Étape 1: Solution gloutonne pour obtenir une première bonne solution
+    # Étape 1: Solution gloutonne pour obtenir une première solution
     greedy_combination, greedy_cost, greedy_gain = greedy_solution(
         actions, budget
         )
 
-    # Étape 2: Programmation dynamique avec élagage basé sur solution gloutonne
+    print("\nSolution gloutonne: \n")
+    print("Nom action : Cout ; Taux")
+    for action_name, action_data in greedy_combination:
+        print(f"{action_name} : {action_data['cout']:.2f}€ ; "
+              f"Taux : {action_data['taux']*100:.2f}%")
+
+    print(f"\nCoût total : {greedy_cost:.2f}€, "
+          f"Gain total sur 2 ans : {greedy_gain:.2f}€")
+
+    # Étape 2: Programmation dynamique
     best_combination, best_cost, best_gain = knapsack(actions, budget)
 
     return best_combination, best_cost, best_gain
