@@ -24,7 +24,7 @@ def get_top_combinations(actions, budget, top_n):
     for r in range(1, len(actions) + 1):
         # Génère toutes les commbinaisons possibles avec Itertools
         for combination in itertools.combinations(actions.items(), r):
-            # Appel de la fonction de calcul des costs / gains
+            # Appel de la fonction de calcul des couts / gains
             total_cost, total_gain = calculate_total_cost_gain(combination)
             # Ajoute la combinaison donnée si son coût total <= budget
             if total_cost <= budget:
