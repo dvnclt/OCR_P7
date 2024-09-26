@@ -1,3 +1,5 @@
+import csv
+import os
 
 
 def import_csv(csv_file):
@@ -27,6 +29,22 @@ def import_csv(csv_file):
                               f"({cout}) ignorée.")
 
     return actions
+
+
+def export_csv(data, filename):
+    # Crée le chemin complet pour le fichier
+    path = os.path.join('optimized/Sienna', filename)
+
+    # Ouvre le fichier en mode écriture
+    with open(path, mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        # Écrit les en-têtes (les clés du premier dictionnaire)
+        writer.writerow(data[0].keys())
+
+        # Écrit les valeurs de chaque dictionnaire
+        for entry in data:
+            writer.writerow(entry.values())
 
 
 # Calcule le gain d'une action
